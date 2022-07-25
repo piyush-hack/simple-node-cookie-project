@@ -19,31 +19,6 @@ app.get('/', (req, res) => {
   res.send('Welcome')
 })
 
-app.get('/uploads/:id', async (req, res) => {
-
-const path = Path.join(__dirname, req.params.id);
-
-  try {
-    await Fs.access(path)
-    res.status(500).send("Found");
-  } catch {
-    res.sendFile(__dirname + '/uploads/imgNotFound.jpg');
-  }
-
-})
-
-app.get('/uploads//:id', async (req, res) => {
-
-  const path = Path.join(__dirname, req.params.id);
-  
-    try {
-      await Fs.access(path)
-      res.status(500).send("Found");
-    } catch {
-      res.sendFile(__dirname + '/uploads/imgNotFound.jpg');
-    }
-  
-  })
 
 
 app.use('/api/movies', require('./routes/movies'));
